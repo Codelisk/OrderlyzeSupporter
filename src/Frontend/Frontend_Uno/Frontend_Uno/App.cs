@@ -15,7 +15,6 @@ namespace Frontend_Uno;
 public partial class App : PrismApplication
 {
     protected Window? MainWindow { get; private set; }
-    protected IHost? Host { get; private set; }
 
     protected override void ConfigureApp(IApplicationBuilder builder)
     {
@@ -101,8 +100,6 @@ public partial class App : PrismApplication
                 {
                     var configuration = context.Configuration;
                     services.AddSingleton<IDispatcher, Dispatcher>();
-                    services.AddSingleton<OpenAIClient>(new OpenAIClient(configuration["OpenAIApiKey"]));
-                    services.AddTransient<IOrderlyzeChatService, OrderlyzeChatService>();
                     services.AddApi<AuthenticationService>();
                     // TODO: Register your services
                     //services.AddSingleton<IMyService, MyService>();

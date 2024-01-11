@@ -11,7 +11,6 @@ namespace Frontend_Uno.Presentation;
 public class ShellViewModel : BindableBase, IActiveAware
 {
     private readonly IRegionManager _regionManager;
-    private readonly Func<IOrderlyzeChatService> orderlyzeChatService;
     private readonly Func<ITokenCache> _tokenCache;
     private readonly Func<IAuthenticationService> _auth;
     private readonly Func<IDispatcher> _dispatcher;
@@ -21,14 +20,12 @@ public class ShellViewModel : BindableBase, IActiveAware
     public DelegateCommand NavigateCommand { get; }
     public ShellViewModel(
         IRegionManager regionManager,
-        Func<IOrderlyzeChatService> orderlyzeChatService,
         Func<ITokenCache> tokenCache,
         Func<IAuthenticationService> auth,
         Func<IDispatcher> dispatcher,
         Func<IDialogService> dialogs)
     {
         _regionManager = regionManager;
-        this.orderlyzeChatService = orderlyzeChatService;
         //_tokenCache = tokenCache;
         //_auth = auth;
         //_dispatcher = dispatcher;

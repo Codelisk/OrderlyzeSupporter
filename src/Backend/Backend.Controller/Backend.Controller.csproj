@@ -8,17 +8,13 @@
   <Import Project="..\..\..\..\..\..\Backend.props" Condition="exists('..\..\..\..\..\..\Backend.props')" />
   <Import Project="..\..\..\..\..\..\..\Backend.props" Condition="exists('..\..\..\..\..\..\..\Backend.props')" />
   <Import Project="..\..\..\..\..\..\..\..\Backend.props" Condition="exists('..\..\..\..\..\..\..\..\Backend.props')" />
-  <ItemGroup>
-    <Compile Remove="Services\**" />
-    <EmbeddedResource Remove="Services\**" />
-    <None Remove="Services\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <!--<Compile Include="obj/generated/**" />-->
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Azure.AI.OpenAI" />
   </ItemGroup>
 
   <ItemGroup>

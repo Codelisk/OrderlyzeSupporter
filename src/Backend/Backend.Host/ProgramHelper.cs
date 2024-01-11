@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Backend.Host.Extensions;
 using Backend.Repositories;
 using Backend.Manager;
+using Backend.Controller.Services;
+using Azure.AI.OpenAI;
 
 namespace Backend.Host
 {
@@ -43,6 +45,8 @@ namespace Backend.Host
             services.AddManager();
             services.AddRepositoryServices();
             services.AddRepositories();
+            services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
+            services.AddTransient<IOrderlyzeChatService, OrderlyzeChatService>();
         }
 
         public static void Configure(this WebApplication app)

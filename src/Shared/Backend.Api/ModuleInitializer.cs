@@ -1,4 +1,5 @@
 ﻿using Backend.Api.Repositories;
+using Backend.Api.Repositories.Normal;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace Backend.Api
 
             services.AddSingleton<IApiBuilder, ApiBuilder>();
             services.AddSingleton<IBaseRepositoryProvider, BaseRepositoryProvider>();
+            services.AddSingleton<IOpenAIRepository, OpenAIRepository>();
         }
 
         private void SetupAuthentication<TAuthService>(IServiceCollection services) where TAuthService : class, IAuthenticationService

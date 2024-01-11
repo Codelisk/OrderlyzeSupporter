@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Backend.Api;
+using Backend.Api.Repositories.Normal;
 using BaseServicesModule.Services.Vms;
 using Frontend_Uno.Services;
 using ReactiveUI;
@@ -12,19 +13,19 @@ using Supporter.Foundation.Dtos;
 namespace Frontend_Uno.Presentation.Asking;
 public partial class AskingModeViewModel : RegionBaseViewModel
 {
-    private readonly IOrderlyzeChatService orderlyzeChatService;
+    private readonly IOpenAIRepository openAIRepository;
     private readonly IAiConversationPartRepository aiConversationPartRepository;
     private readonly ICorrectConversationPartRepository correctConversationPartRepository;
 
-    public AskingModeViewModel(IOrderlyzeChatService orderlyzeChatService, VmServices vmServices,
+    public AskingModeViewModel(
+        IOpenAIRepository openAIRepository,
+        VmServices vmServices,
         IAiConversationPartRepository aiConversationPartRepository,
         ICorrectConversationPartRepository correctConversationPartRepository) : base(vmServices)
     {
-        this.orderlyzeChatService = orderlyzeChatService;
+        this.openAIRepository = openAIRepository;
         this.aiConversationPartRepository = aiConversationPartRepository;
         this.correctConversationPartRepository = correctConversationPartRepository;
-
-        orderlyzeChatService.StartChat();
     }
 
     public ICommand AskCommand => this.LoadingCommand(async () => await OnAskAsync());
@@ -47,7 +48,7 @@ public partial class AskingModeViewModel : RegionBaseViewModel
     private async Task OnAskAsync()
     {
         this.IsBusy = true;
-        this.Answer = await this.orderlyzeChatService.AddMessageAsync(Question);
+        this.Answer = await this.openAIRepository.AskQuestionAsync(Question);
         await this.aiConversationPartRepository.Add(new AiConversationPartDto() { Question = Question, Answer = Answer });
         this.IsBusy = false;
     }
@@ -63,6 +64,6 @@ public partial class AskingModeViewModel : RegionBaseViewModel
         await base.InitializeAsync(navContext);
         var conversations = await correctConversationPartRepository.GetAll();
 
-        orderlyzeChatService.AddUserInput(conversations.Select(x => x as BaseConversationPart).ToList());
+        await openAIRepository.AddUserInput(conversations.Select(x => x as BaseConversationPart).ToList());
     }
 }

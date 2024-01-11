@@ -13,26 +13,19 @@ using Microsoft.Extensions.Configuration;
 namespace Frontend_Uno.Presentation.Login;
 public class LoginViewModel : RegionBaseViewModel
 {
-    private readonly IOrderlyzeChatService orderlyzeChatService;
     private readonly IRegionManager regionManager;
     private readonly IConfiguration configuration;
     private readonly Func<Backend.Api.Services.Auth.IAuthenticationService> authenticationService;
 
-    public LoginViewModel(IOrderlyzeChatService orderlyzeChatService,
+    public LoginViewModel(
         VmServices vmServices,
         IRegionManager regionManager,
         IConfiguration configuration,
         Func<Backend.Api.Services.Auth.IAuthenticationService> authenticationService) : base(vmServices)
     {
-        this.orderlyzeChatService = orderlyzeChatService;
         this.regionManager = regionManager;
         this.configuration = configuration;
         this.authenticationService = authenticationService;
-        Task.Run(async () =>
-        {
-            await Task.Delay(3000);
-            Password = configuration["OPENAIAPIKEY"];
-        });
     }
     public ICommand LoginCommand => this.LoadingCommand(async () => await OnLoginAsync());
 

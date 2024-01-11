@@ -12,14 +12,12 @@ using Supporter.Foundation.Dtos;
 namespace Frontend_Uno.Presentation.Learning;
 public class LearnModeViewModel : RegionBaseViewModel
 {
-    private readonly IOrderlyzeChatService orderlyzeChatService;
     private readonly ICorrectConversationPartRepository correctConversationPartRepository;
 
-    public LearnModeViewModel(IOrderlyzeChatService orderlyzeChatService,
+    public LearnModeViewModel(
         VmServices vmServices,
         Func<ICorrectConversationPartRepository> correctConversationPartRepository) : base(vmServices)
     {
-        this.orderlyzeChatService = orderlyzeChatService;
         this.correctConversationPartRepository = correctConversationPartRepository();
 
         LoadConversationsAsync();
