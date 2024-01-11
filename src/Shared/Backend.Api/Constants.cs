@@ -8,6 +8,6 @@ namespace Backend.Api
 {
     public static class Constants
     {
-        public static string RestUrl = "https://8fb1-178-189-140-192.ngrok-free.app/";
+        public static string RestUrl = "https://41da-178-189-140-192.ngrok-free.app/";
     }
 }
