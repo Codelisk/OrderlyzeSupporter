@@ -1,0 +1,17 @@
+<Project>
+  <Import Project="Uno.Modules.targets" Condition="exists('Uno.Modules.targets')" />
+
+
+  <PropertyGroup>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) or '$(EnableWindowsTargeting)' == 'true'">$(TargetFrameworks);net8.0-windows10.0.22621</TargetFrameworks>
+    <TargetFrameworks>$(TargetFrameworks);net8.0;net8.0-android</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OverrideTargetFrameworks)'!=''">net8.0-windows10.0.22621;$(OverrideTargetFrameworks)</TargetFrameworks>
+    <!-- Ensures the .xr.xml files are generated in a proper layout folder -->
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Uno.WinUI" />
+    <PackageReference Include="Prism.DryIoc.Uno.WinUI" />
+  </ItemGroup>
+</Project>

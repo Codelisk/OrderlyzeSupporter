@@ -1,0 +1,57 @@
+name: Pages
+on:
+  pull_request:
+    branches: [ master] 
+  workflow_dispatch:  # Allows workflow to be ran via a button
+jobs:
+  build:
+    runs-on: macos-latest
+    name: Build
+    env:
+      config: 'Release'
+      framework: 'net8.0'
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: 'recursive'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x.x
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: 'Add NuGet source'
+      run: |
+          dotnet nuget add source "https://sponsorconnect.dev/v3/index.json" --name "Connect" --username "Codelisk" --password ${{ secrets.SPONSOR_CONNECT_PASSWORD }} --store-password-in-clear-text
+    #- name: Restore Dependencies
+      #run: dotnet restore ./src/Frontend/Frontend_Uno/Frontend_Uno.Wasm/Frontend_Uno.Wasm.csproj
+    - name: Build Submodules 
+      run: dotnet build ./src/Submodules/CodeGen/CodeGen.sln  -v "n"  
+    - name: Build 
+      run: dotnet build ./src/Frontend/Frontend_Uno/Frontend_Uno.Wasm/Frontend_Uno.Wasm.csproj  -v "n" --framework $framework  -c $config
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      if: github.event_name == 'workflow_dispatch' # Only deploy if Workflow manually ran
+      with:
+        name: pages
+        path: ./src/Frontend/Frontend_Uno/Frontend_Uno.Wasm/bin/${{env.config}}/${{env.framework}}/dist/        
+  deploy:
+    needs: build 
+    runs-on: ubuntu-latest
+    name: Deploy
+    if: github.event_name == 'workflow_dispatch' # Only deploy if Workflow manually ran
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v2
+      with:
+        name: pages
+        path: dist        
+    - name: Deploy to GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: ./dist/
+        jekyll: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

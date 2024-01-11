@@ -1,0 +1,4 @@
+<Project>
+  <Import Project="..\..\Shared\Itspecialist.Base\base.props" />
+
+</Project>

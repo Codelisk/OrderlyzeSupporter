@@ -1,0 +1,13 @@
+global using AutoMapper;
+global using Codelisk.GeneratorAttributes;
+global using Codelisk.GeneratorAttributes.WebAttributes.Repository;
+global using Supporter.Foundation;
+global using Supporter.Foundation.Dtos;
+global using Supporter.Foundation.Dtos.Base;
+global using Supporter.Foundation.Entities;
+global using Supporter.Foundation.Entities.User;
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;

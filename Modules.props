@@ -1,0 +1,10 @@
+<Project>
+
+	<Import Project="Library.props" Condition="exists('Library.props')" />
+	
+	<ItemGroup>
+    <PackageReference Include="AsyncAwaitBestPractices" />
+    <PackageReference Include="ReactiveUI" />
+    <PackageReference Include="Prism.Core" />
+	</ItemGroup>
+</Project>

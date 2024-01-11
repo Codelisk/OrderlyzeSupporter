@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Remote Launch - Self-contained",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "~/Backend.Host/Backend.Host",
+            "args": [],
+            "cwd": "~/Backend.Host",
+            "stopAtEntry": false,
+            "console": "internalConsole",
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}",
+                "pipeProgram": "ssh",
+                "pipeArgs": [
+                    "daniel@daniel"
+                ],
+                "debuggerPath": "~/vsdbg/vsdbg"
+            }
+        },
+}

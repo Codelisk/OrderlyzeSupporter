@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\Library.props" Condition="exists('..\Library.props')" />
+  <Import Project="..\..\Library.props" Condition="exists('..\..\Library..props')" />
+  <Import Project="..\..\..\Library.props" Condition="exists('..\..\..\Library.props')" />
+  <Import Project="..\..\..\..\Library.props" Condition="exists('..\..\..\..\Library.props')" />
+  <Import Project="..\..\..\..\..\Library.props" Condition="exists('..\..\..\..\..\Library.props')" />
+  <Import Project="..\..\..\..\..\..\Library.props" Condition="exists('..\..\..\..\..\..\Library.props')" />
+  <Import Project="..\..\..\..\..\..\..\Library.props" Condition="exists('..\..\..\..\..\..\..\Library.props')" />
+
+  <ItemGroup>
+    <PackageReference Include="Polly" />
+    <PackageReference Include="Refit" />
+    <PackageReference Include="Refit.Newtonsoft.Json" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--<ProjectReference Include="..\..\Submodules\CodeGen\src\Generators\Api\Codelisk.Api.RefitApis.Generator\Codelisk.Api.RefitApis.Generator.csproj" PrivateAssets="all" OutputItemType="Analyzer" />-->
+    <!--<ProjectReference Include="..\..\Submodules\CodeGen\src\Generators\Api\Api.Generator\Api.Generator.csproj" PrivateAssets="all" OutputItemType="Analyzer" />-->
+    <ProjectReference Include="..\Supporter.Foundation\Supporter.Foundation.csproj" />
+  </ItemGroup>
+</Project>

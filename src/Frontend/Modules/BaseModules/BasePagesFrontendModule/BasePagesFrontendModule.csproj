@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="Modules.props" Condition="exists('Modules.props')" />
+  <Import Project="..\Modules.props" Condition="exists('..\Modules.props')" />
+  <Import Project="..\..\Modules.props" Condition="exists('..\..\Modules.props')" />
+  <Import Project="..\..\..\Modules.props" Condition="exists('..\..\..\Modules.props')" />
+  <Import Project="..\..\..\..\Modules.props" Condition="exists('..\..\..\..\Modules.props')" />
+  <Import Project="..\..\..\..\..\Modules.props" Condition="exists('..\..\..\..\..\Modules.props')" />
+  <Import Project="..\..\..\..\..\..\Modules.props" Condition="exists('..\..\..\..\..\..\Modules.props')" />
+  <Import Project="..\..\..\..\..\..\..\Modules.props" Condition="exists('..\..\..\..\..\..\..\Modules.props')" />
+  <Import Project="..\..\..\..\..\..\..\..\Modules.props" Condition="exists('..\..\..\..\..\..\..\..\Modules.props')" />
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Uno.WinUI" />
+    <PackageReference Include="Prism.DryIoc.Uno.WinUI" />
+    <PackageReference Include="Uno.WinUI" />
+    <PackageReference Include="Uno.WinUI.Markup" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BasePagesBackendModule\BasePagesBackendModule.csproj" />
+  </ItemGroup>
+</Project>
