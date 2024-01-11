@@ -100,7 +100,7 @@ public partial class App : PrismApplication
                 .ConfigureServices((context, services) =>
                 {
                     services.AddSingleton<IDispatcher, Dispatcher>();
-                    services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
+                    services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
                     services.AddTransient<IOrderlyzeChatService, OrderlyzeChatService>();
                     services.AddApi<AuthenticationService>();
                     // TODO: Register your services

@@ -21,11 +21,8 @@ public class LearnModeViewModel : RegionBaseViewModel
     {
         this.orderlyzeChatService = orderlyzeChatService;
         this.correctConversationPartRepository = correctConversationPartRepository();
-    }
-    public override async Task InitializeAsync(NavigationContext navContext)
-    {
-        await base.InitializeAsync(navContext);
-        await LoadConversationsAsync();
+
+        LoadConversationsAsync();
     }
 
     public ICommand SendCommand => this.LoadingCommand(async () => await OnSendAsync());
@@ -46,7 +43,8 @@ public class LearnModeViewModel : RegionBaseViewModel
     public List<CorrectConversationPartDto> Conversations { get; set; }
     private async Task LoadConversationsAsync()
     {
-        Conversations = (await this.correctConversationPartRepository.GetAll()).OrderDescending().ToList();
+        Conversations = (await this.correctConversationPartRepository.GetAll()).ToList();
+        Conversations.Reverse();
         this.RaisePropertyChanged(nameof(Conversations));
     }
     private async Task OnSendAsync()
