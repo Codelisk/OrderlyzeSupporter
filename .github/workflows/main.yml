@@ -20,6 +20,7 @@ jobs:
         dotnet-version: 8.x.x
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        OPENAIAPIKEY: ${{ secrets.OPENAIAPIKEY }}
 
     - name: 'Add NuGet source'
       run: |
