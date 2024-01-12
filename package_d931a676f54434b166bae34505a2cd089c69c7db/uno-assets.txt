@@ -1,0 +1,6 @@
+Uno.Fonts.Fluent/Fonts/uno-fluentui-assets.ttf
+Uno.Fonts.Roboto/Fonts/Roboto-Medium.ttf
+Uno.Fonts.Roboto/Fonts/Roboto-Light.ttf
+Uno.Fonts.Roboto/Fonts/Roboto-Regular.ttf
+Frontend_Uno/Assets/SharedAssets.md
+Frontend_Uno.Wasm
