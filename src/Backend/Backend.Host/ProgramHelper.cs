@@ -45,8 +45,8 @@ namespace Backend.Host
             services.AddManager();
             services.AddRepositoryServices();
             services.AddRepositories();
-            services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
-            services.AddTransient<IOrderlyzeChatService, OrderlyzeChatService>();
+            services.AddSingleton<OpenAIClient>(new OpenAIClient("xxx"));
+            services.AddSingleton<IOrderlyzeChatService, OrderlyzeChatService>();
         }
 
         public static void Configure(this WebApplication app)

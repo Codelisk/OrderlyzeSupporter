@@ -28,7 +28,7 @@ namespace Backend.Controller.Controllers
         }
 
         [Microsoft.AspNetCore.Mvc.HttpPost("AddUserInput")]
-        public async Task AddUserInput(List<BaseConversationPart> baseConversationParts)
+        public async Task AddUserInput([FromBody] List<BaseConversationPart> baseConversationParts)
         {
             _orderlyzeChatService.AddUserInput(baseConversationParts);
         }
