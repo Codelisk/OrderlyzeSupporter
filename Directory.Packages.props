@@ -16,6 +16,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(MicrosoftExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(MicrosoftExtensionsVersion)" />
     <PackageVersion Include="Moq" Version="4.20.69" />
+    <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.0-beta.2" />
     <PackageVersion Include="ReactiveUI.Uno" Version="19.1.34" />
   </ItemGroup>
   <ItemGroup>
@@ -39,7 +40,7 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="$(MicrosoftEntityFrameworkCore)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftEntityFrameworkCore)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(MicrosoftEntityFrameworkCore)" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(MicrosoftEntityFrameworkCore)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(MicrosoftEntityFrameworkCore)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftEntityFrameworkCore)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftEntityFrameworkCore)" />

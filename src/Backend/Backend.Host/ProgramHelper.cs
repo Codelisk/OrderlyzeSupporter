@@ -45,7 +45,7 @@ namespace Backend.Host
             services.AddManager();
             services.AddRepositoryServices();
             services.AddRepositories();
-            services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
+            services.AddSingleton<OpenAIClient>(new OpenAIClient("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"));
             services.AddTransient<IOrderlyzeChatService, OrderlyzeChatService>();
         }
 
@@ -81,7 +81,7 @@ namespace Backend.Host
 
             builder.Services.AddDbContext<BackendContext>(opt =>
             {
-                opt.UseSqlite(connectionString, x => x.MigrationsAssembly("Backend.Host"));
+                opt.UseMySql(connectionString, new MariaDbServerVersion("15.1"), x => x.MigrationsAssembly("Backend.Host"));
                 //opt.UseSqlite(connectionString);
             });
         }
