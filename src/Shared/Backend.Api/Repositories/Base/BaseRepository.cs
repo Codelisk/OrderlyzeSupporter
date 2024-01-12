@@ -11,15 +11,11 @@ namespace Backend.Api.Repositories.Base
     {
         protected readonly TApi _repositoryApi;
 
-        private readonly JsonSerializerSettings _jsonSettings;
         private readonly ILogger _logger;
         private readonly IBaseRepositoryProvider _baseRepositoryProvider;
 
         protected BaseRepository(IBaseRepositoryProvider baseRepositoryProvider)
         {
-            _jsonSettings = new JsonSerializerSettings();
-            _jsonSettings.TypeNameHandling = TypeNameHandling.All;
-
             _repositoryApi = baseRepositoryProvider.GetApiBuilder().BuildRestService<TApi>(GetAuthorizationHeaderValueAsync);
             _logger = baseRepositoryProvider.GetLogger();
 

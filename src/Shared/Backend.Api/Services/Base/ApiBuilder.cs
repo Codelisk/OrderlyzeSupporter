@@ -8,7 +8,7 @@ namespace Backend.Api.Services.Base
 {
     public class ApiBuilder : IApiBuilder
     {
-        private readonly JsonSerializerSettings _jsonSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+        //private readonly JsonSerializerSettings _jsonSettings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.None };
 
         public TApi BuildRestService<TApi>(Func<HttpRequestMessage, CancellationToken, Task<string>>? AuthorizationHeaderValueGetter = null)
         {
@@ -23,7 +23,6 @@ namespace Backend.Api.Services.Base
         {
             return new RefitSettings
             {
-                ContentSerializer = new NewtonsoftJsonContentSerializer(_jsonSettings),
                 AuthorizationHeaderValueGetter = AuthorizationHeaderValueGetter
             };
         }
